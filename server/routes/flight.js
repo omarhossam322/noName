@@ -91,9 +91,15 @@ flightRoutes.route("/flight/add").post(function (req, response) {
     flight_no: req.body.flight_no,
     flight_from: req.body.flight_from,
     flight_to: req.body.flight_to,
+    flight_time: req.body.flight_time,
     flight_date: req.body.flight_date,
+    flight_arrival_time: req.body.flight_arrival_time,
+    flight_arrival_date: req.body.flight_arrival_date,
+    flight_duration: req.body.flight_duration,
     flight_cabin: req.body.flight_cabin,
+    flight_baggage: req.body.flight_baggage,
     flight_seats: req.body.flight_seats,
+    flight_price: req.body.flight_price,
   };
   db_connect.collection("flights").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -110,9 +116,15 @@ flightRoutes.route("/updateFlight/:id").post(function (req, response) {
       flight_no: req.body.flight_no,
       flight_from: req.body.flight_from,
       flight_to: req.body.flight_to,
+      flight_time: req.body.flight_time,
       flight_date: req.body.flight_date,
+      flight_arrival_time: req.body.flight_arrival_time,
+      flight_arrival_date: req.body.flight_arrival_date,
+      flight_duration: req.body.flight_duration,
       flight_cabin: req.body.flight_cabin,
+      flight_baggage: req.body.flight_baggage,
       flight_seats: req.body.flight_seats,
+      flight_price: req.body.flight_price,
     },
   };
   db_connect

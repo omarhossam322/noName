@@ -19,7 +19,7 @@ class Edit extends Component {
     this.onChangeFlightCabin = this.onChangeFlightCabin.bind(this);
     this.onChangeFlightBaggage = this.onChangeFlightBaggage.bind(this);
     this.onChangeFlightSeats = this.onChangeFlightSeats.bind(this);
-    this.onChangeFlightPrice = this.onChangeFlightSeats.bind(this);
+    this.onChangeFlightPrice = this.onChangeFlightPrice.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -171,7 +171,7 @@ class Edit extends Component {
       <div>
         <h3 align="center">Update Flight</h3>
         <form onSubmit={this.onSubmit}>
-        <div className="form-group">
+          <div className="form-group">
             <label>Flight Number: </label>
             <input
               type="number"
@@ -199,7 +199,7 @@ class Edit extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Flight Date: </label>
+            <label>Flight Time: </label>
             <input
               type="time"
               className="form-control"
@@ -217,7 +217,7 @@ class Edit extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Arrival Date: </label>
+            <label>Arrival Time: </label>
             <input
               type="time"
               className="form-control"
@@ -241,15 +241,6 @@ class Edit extends Component {
               className="form-control"
               value={this.state.flight_duration}
               onChange={this.onChangeFlightDuration}
-            />
-          </div>
-          <div className="form-group">
-            <label>Seats: </label>
-            <input
-              type="number"
-              className="form-control"
-              value={this.state.flight_seats}
-              onChange={this.onChangeFlightSeats}
             />
           </div>
           <div className="form-group">
