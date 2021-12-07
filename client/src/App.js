@@ -6,9 +6,9 @@ import { Route } from "react-router-dom";
 // We import all the components we need in our app
 import Navbar from "./components/navbar";
 import NavbarUser from "./components/navbarUser";
-import Edit from "./components/editFlight";
+import EditFlight from "./components/editFlight";
 import EditUser from "./components/editUser";
-import Create from "./components/createFlight";
+import CreateFlight from "./components/createFlight";
 import FlightList from "./components/flightList";
 import FlightListUsers from "./components/flightListUsers";
 import FlightListUsersReturn from "./components/flightListUsersReturn";
@@ -40,9 +40,9 @@ const App = () => {
 
       <Route path="/returnFlight/:flight_to/:flight_no" component={FlightListUsersReturn}>
       </Route>
-      <Route path="/editFlight/:id" component={Edit} />
+      <Route path="/editFlight/:id" component={EditFlight} />
       <Route path="/createFlight">
-        <Create />
+        <CreateFlight />
       </Route>
     </div>
   );

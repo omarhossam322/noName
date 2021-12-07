@@ -8,9 +8,15 @@ const Flight = (props) => (
     <td>{props.flight.flight_no}</td>
     <td>{props.flight.flight_from}</td>
     <td>{props.flight.flight_to}</td>
+    <td>{props.flight.flight_time}</td>
     <td>{props.flight.flight_date}</td>
+    <td>{props.flight.flight_arrival_time}</td>
+    <td>{props.flight.flight_arrival_date}</td>
+    <td>{props.flight.flight_duration}</td>
     <td>{props.flight.flight_cabin}</td>
+    <td>{props.flight.flight_baggage}</td>
     <td>{props.flight.flight_seats}</td>
+    <td>{props.flight.flight_price}</td>
     <td>
       <a
         href="/userHome"
@@ -87,9 +93,15 @@ export default class FlightList extends Component {
               <th>Flight Number</th>
               <th>From</th>
               <th>To</th>
-              <th>Flight Date</th>
+              <th>Departure Time</th>
+              <th>Departure Date</th>
+              <th>Arrival Time</th>
+              <th>Arrival Date</th>
+              <th>Trip duration</th>
               <th>Cabin</th>
+              <th>Baggage allowed</th>
               <th>Seats Available</th>
+              <th>Price</th>
               <th>Action</th>
             </tr>
           </thead>

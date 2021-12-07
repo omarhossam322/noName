@@ -24,7 +24,7 @@ flightRoutes.route("/flight").get(function (req, res) {
     });
 });
 
-// This section will help you get flights by from
+// This section will help you get flights by departure airport
 flightRoutes.route("/reserve/:flight_to").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { flight_from: req.params.flight_to};

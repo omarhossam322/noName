@@ -12,17 +12,28 @@ class Edit extends Component {
     this.onChangeFlightFrom = this.onChangeFlightFrom.bind(this);
     this.onChangeFlightTo = this.onChangeFlightTo.bind(this);
     this.onChangeFlightDate = this.onChangeFlightDate.bind(this);
+    this.onChangeFlightTime = this.onChangeFlightTime.bind(this);
+    this.onChangeFlightArrivalDate = this.onChangeFlightArrivalDate.bind(this);
+    this.onChangeFlightArrivalTime = this.onChangeFlightArrivalTime.bind(this);
+    this.onChangeFlightDuration = this.onChangeFlightDuration.bind(this);
     this.onChangeFlightCabin = this.onChangeFlightCabin.bind(this);
+    this.onChangeFlightBaggage = this.onChangeFlightBaggage.bind(this);
     this.onChangeFlightSeats = this.onChangeFlightSeats.bind(this);
+    this.onChangeFlightPrice = this.onChangeFlightSeats.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       flight_no: "",
       flight_from: "",
       flight_to: "",
+      flight_time: "",
       flight_date: "",
+      flight_arrival_time: "",
+      flight_arrival_date: "",
       flight_cabin: "",
+      flight_baggage: "",
       flight_seats: "",
+      flight_price: "",
       flights: [],
     };
   }
@@ -35,9 +46,15 @@ class Edit extends Component {
           flight_no: response.data.flight_no,
           flight_from: response.data.flight_from,
           flight_to: response.data.flight_to,
+          flight_time: response.data.flight_time,
           flight_date: response.data.flight_date,
+          flight_arrival_time: response.data.flight_arrival_time,
+          flight_arrival_date: response.data.flight_arrival_date,
+          flight_duration: response.data.flight_duration,
           flight_cabin: response.data.flight_cabin,
+          flight_baggage: response.data.flight_baggage,
           flight_seats: response.data.flight_seats,
+          flight_price: response.data.flight_price,
         });
       })
       .catch(function (error) {
@@ -64,9 +81,33 @@ class Edit extends Component {
     });
   }
 
+  onChangeFlightTime(e) {
+    this.setState({
+      flight_time: e.target.value,
+    });
+  }
+  
   onChangeFlightDate(e) {
     this.setState({
       flight_date: e.target.value,
+    });
+  }
+  
+    onChangeFlightArrivalTime(e) {
+      this.setState({
+        flight_arrival_time: e.target.value,
+      });
+    }
+
+  onChangeFlightArrivalDate(e) {
+    this.setState({
+      flight_arrival_date: e.target.value,
+    });
+  }
+
+  onChangeFlightDuration(e) {
+    this.setState({
+      flight_duration: e.target.value,
     });
   }
 
@@ -76,9 +117,21 @@ class Edit extends Component {
     });
   }
 
+  onChangeFlightBaggage(e) {
+    this.setState({
+      flight_baggage: e.target.value,
+    });
+  }
+
   onChangeFlightSeats(e) {
     this.setState({
       flight_seats: e.target.value,
+    });
+  }
+
+  onChangeFlightPrice(e) {
+    this.setState({
+      flight_price: e.target.value,
     });
   }
 
@@ -89,9 +142,15 @@ class Edit extends Component {
       flight_no: this.state.flight_no,
       flight_from: this.state.flight_from,
       flight_to: this.state.flight_to,
+      flight_time: this.state.flight_time,
       flight_date: this.state.flight_date,
+      flight_arrival_time: this.state.flight_arrival_time,
+      flight_arrival_date: this.state.flight_arrival_date,
+      flight_duration: this.state.flight_duration,
       flight_cabin: this.state.flight_cabin,
+      flight_baggage: this.state.flight_baggage,
       flight_seats: this.state.flight_seats,
+      flight_price: this.state.flight_price,
     };
     console.log(newEditedflight);
 
@@ -112,7 +171,7 @@ class Edit extends Component {
       <div>
         <h3 align="center">Update Flight</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
+        <div className="form-group">
             <label>Flight Number: </label>
             <input
               type="number"
@@ -142,10 +201,55 @@ class Edit extends Component {
           <div className="form-group">
             <label>Flight Date: </label>
             <input
+              type="time"
+              className="form-control"
+              value={this.state.flight_time}
+              onChange={this.onChangeFlightTime}
+            />
+          </div>
+          <div className="form-group">
+            <label>Flight Date: </label>
+            <input
               type="date"
               className="form-control"
               value={this.state.flight_date}
               onChange={this.onChangeFlightDate}
+            />
+          </div>
+          <div className="form-group">
+            <label>Arrival Date: </label>
+            <input
+              type="time"
+              className="form-control"
+              value={this.state.flight_arrival_time}
+              onChange={this.onChangeFlightArrivalTime}
+            />
+          </div>
+          <div className="form-group">
+            <label>Arrival Date: </label>
+            <input
+              type="date"
+              className="form-control"
+              value={this.state.flight_arrival_date}
+              onChange={this.onChangeFlightArrivalDate}
+            />
+          </div>
+          <div className="form-group">
+            <label>Duration: </label>
+            <input
+              type="number"
+              className="form-control"
+              value={this.state.flight_duration}
+              onChange={this.onChangeFlightDuration}
+            />
+          </div>
+          <div className="form-group">
+            <label>Seats: </label>
+            <input
+              type="number"
+              className="form-control"
+              value={this.state.flight_seats}
+              onChange={this.onChangeFlightSeats}
             />
           </div>
           <div className="form-group">
@@ -158,12 +262,30 @@ class Edit extends Component {
             />
           </div>
           <div className="form-group">
+            <label>Baggage: </label>
+            <input
+              type="number"
+              className="form-control"
+              value={this.state.flight_baggage}
+              onChange={this.onChangeFlightBaggage}
+            />
+          </div>
+          <div className="form-group">
             <label>Seats: </label>
             <input
               type="number"
               className="form-control"
               value={this.state.flight_seats}
               onChange={this.onChangeFlightSeats}
+            />
+          </div>
+          <div className="form-group">
+            <label>Price: </label>
+            <input
+              type="number"
+              className="form-control"
+              value={this.state.flight_price}
+              onChange={this.onChangeFlightPrice}
             />
           </div>
           <br />

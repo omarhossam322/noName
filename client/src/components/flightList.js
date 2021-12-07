@@ -2,15 +2,22 @@ import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { useTable, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
 
 const Flight = (props) => (
   <tr>
     <td>{props.flight.flight_no}</td>
     <td>{props.flight.flight_from}</td>
     <td>{props.flight.flight_to}</td>
+    <td>{props.flight.flight_time}</td>
     <td>{props.flight.flight_date}</td>
+    <td>{props.flight.flight_arrival_time}</td>
+    <td>{props.flight.flight_arrival_date}</td>
+    <td>{props.flight.flight_duration}</td>
     <td>{props.flight.flight_cabin}</td>
+    <td>{props.flight.flight_baggage}</td>
     <td>{props.flight.flight_seats}</td>
+    <td>{props.flight.flight_price}</td>
     <td>
       <Link to={"/editFlight/" + props.flight._id}>Edit</Link> |
       <a
@@ -36,7 +43,7 @@ export default class FlightList extends Component {
   constructor(props) {
     super(props);
     this.deleteFlight = this.deleteFlight.bind(this);
-    this.state = { flights: [] };
+    this.state = { flights: []};
   }
 
   // This method will get the data from the database.
@@ -86,9 +93,15 @@ export default class FlightList extends Component {
               <th>Flight Number</th>
               <th>From</th>
               <th>To</th>
-              <th>Flight Date</th>
+              <th>Departure Time</th>
+              <th>Departure Date</th>
+              <th>Arrival Time</th>
+              <th>Arrival Date</th>
+              <th>Trip duration</th>
               <th>Cabin</th>
+              <th>Baggage allowed</th>
               <th>Seats Available</th>
+              <th>Price</th>
               <th>Action</th>
             </tr>
           </thead>

@@ -4,7 +4,7 @@ Start server:
 ```
 cd server
 npm install
-npm install -g nodemon
+sudo npm install -g nodemon
 nodemon server
 ```
 
