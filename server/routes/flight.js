@@ -147,35 +147,4 @@ flightRoutes.route("/:id").delete((req, response) => {
   });
 });
 
-flightRoutes.route("/userDetails/:username").get(function (req, res) {
-  let db_connect = dbo.getDb();
-  let myquery = { username: req.params.username};
-  db_connect
-      .collection("users")
-      .findOne(myquery, function (err, result) {
-        if (err) throw err;
-        res.json(result);
-      });
-});
-
-flightRoutes.route("/updateUser/:username").post(function (req, response) {
-  let db_connect = dbo.getDb();
-  let myquery = { username: req.params.username};
-  let newvalues = {
-    $set: {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      passport_number: req.body.passport_number,
-      email: req.body.email,
-    },
-  };
-  db_connect
-    .collection("users")
-    .updateOne(myquery, newvalues, function (err, res) {
-      if (err) throw err;
-      console.log("1 user updated");
-      response.json(res);
-    });
-});
-
 module.exports = flightRoutes;

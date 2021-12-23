@@ -30,7 +30,6 @@ export default class FlightList extends Component {
     super(props);
     this.state = { flights: [] };
   }
-
   // This method will get the data from the database.
   componentDidMount() {
     axios

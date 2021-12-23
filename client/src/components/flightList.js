@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import { useTable, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
+//import { useTable, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
 
 const Flight = (props) => (
   <tr>

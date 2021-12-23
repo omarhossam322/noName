@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
-import { Link } from "react-router-dom";
 
 const Flight = (props) => (
   <tr>
@@ -38,6 +37,23 @@ const Flight = (props) => (
   </tr>
 );
 
+const GuestFlight = (props) => (
+  <tr>
+    <td>{props.flight.flight_no}</td>
+    <td>{props.flight.flight_from}</td>
+    <td>{props.flight.flight_to}</td>
+    <td>{props.flight.flight_time}</td>
+    <td>{props.flight.flight_date}</td>
+    <td>{props.flight.flight_arrival_time}</td>
+    <td>{props.flight.flight_arrival_date}</td>
+    <td>{props.flight.flight_duration}</td>
+    <td>{props.flight.flight_cabin}</td>
+    <td>{props.flight.flight_baggage}</td>
+    <td>{props.flight.flight_seats}</td>
+    <td>{props.flight.flight_price}</td>
+  </tr>
+);
+
 export default class FlightList extends Component {
   // This is the constructor that shall store our data retrieved from the database
   constructor(props) {
@@ -71,15 +87,28 @@ export default class FlightList extends Component {
 
   // This method will map out the flights on the table
   flightList() {
-    return this.state.flights.map((currentflight) => {
-      return (
-        <Flight
-          flight={currentflight}
-          reserve={this.reserve}
-          key={currentflight._id}
-        />
-      );
-    });
+    console.log(sessionStorage.getItem('username'));
+    if(sessionStorage.getItem('username') !== "guest"){
+      return this.state.flights.map((currentflight) => {
+        return (
+          <Flight
+            flight={currentflight}
+            reserve={this.reserve}
+            key={currentflight._id}
+          />
+        );
+      });
+    }else{
+      return this.state.flights.map((currentflight) => {
+        return (
+          <GuestFlight
+            flight={currentflight}
+            reserve={this.reserve}
+            key={currentflight._id}
+          />
+        );
+      });
+    }
   }
 
   // This following section will display the table with the flights.

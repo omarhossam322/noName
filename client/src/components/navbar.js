@@ -11,11 +11,8 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/notadmin">
           Home
-        </NavLink>
-        <NavLink className="navbar-brand" to="/userHome">
-          User Home
         </NavLink>
         <button
           className="navbar-toggler"
@@ -34,6 +31,11 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" to="/createFlight">
                 Add Flight
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/" onClick={sessionStorage.setItem('username', 'guest')}>
+                Signout
               </NavLink>
             </li>
           </ul>

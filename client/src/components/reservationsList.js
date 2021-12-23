@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
-import { Link } from "react-router-dom";
 
 const Reservation = (props) => (
   <tr>
@@ -38,7 +37,7 @@ export default class ReservationList extends Component {
   // This method will get the data from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/reservations/" + "user1")
+      .get("http://localhost:5000/reservations/" + sessionStorage.getItem('username'))
       .then((response) => {
         this.setState({ reservations: response.data });
       })

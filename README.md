@@ -1,4 +1,4 @@
-## How To Run
+## How To Run (linux)
 
 Start server:
 ```

@@ -15,21 +15,23 @@ class Edit extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      first_name: "",
-      last_name: "",
-      passport_number: "",
+      firstname: "",
+      lastname: "",
+      passportNo: "",
       email: "",
     };
+
+
   }
   // This will get the record based on the id from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/userDetails/" + "user1")
+      .get("http://localhost:5000/userDetails/" + sessionStorage.getItem('username'))
       .then((response) => {
         this.setState({
-          first_name: response.data.first_name,
-          last_name: response.data.last_name,
-          passport_number: response.data.passport_number,
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
+          passportNo: response.data.passportNo,
           email: response.data.email,
         });
       })
@@ -41,19 +43,19 @@ class Edit extends Component {
   // These methods will update the state properties.
   onChangeFirstName(e) {
     this.setState({
-      first_name: e.target.value,
+      firstname: e.target.value,
     });
   }
 
   onChangeLastName(e) {
     this.setState({
-      last_name: e.target.value,
+      lastname: e.target.value,
     });
   }
 
   onChangePassportNumber(e) {
     this.setState({
-      passport_number: e.target.value,
+      passportNo: e.target.value,
     });
   }
 
@@ -69,9 +71,9 @@ class Edit extends Component {
   onSubmit(e) {
     e.preventDefault();
     const newEditedUser = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      passport_number: this.state.passport_number,
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      passportNo: this.state.passportNo,
       email: this.state.email,
     };
     console.log(newEditedUser);
@@ -79,7 +81,7 @@ class Edit extends Component {
     // This will send a post request to update the data in the database.
     axios
       .post(
-        "http://localhost:5000/updateUser/" + "user1",
+        "http://localhost:5000/updateUser/" + sessionStorage.getItem('username'),
         newEditedUser
       )
       .then((res) => console.log(res.data));
@@ -98,7 +100,7 @@ class Edit extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.first_name}
+              value={this.state.firstname}
               onChange={this.onChangeFirstName}
             />
           </div>
@@ -107,7 +109,7 @@ class Edit extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.last_name}
+              value={this.state.lastname}
               onChange={this.onChangeLastName}
             />
           </div>
@@ -116,7 +118,7 @@ class Edit extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.passport_number}
+              value={this.state.passportNo}
               onChange={this.onChangePassportNumber}
             />
           </div>
