@@ -76,13 +76,26 @@ export default class FlightList extends Component {
 
   reserve(id) {
     const newReservation = {
-      user: "user1",
+      user: sessionStorage.getItem('username'),
       dep_flight_no: this.props.match.params.flight_no,
       return_flight_no: id,
     };
-    axios.post("http://localhost:5000/reserve/add", newReservation).then((response) => {
-      console.log(response.data);
-    });
+    const editedReservation = {
+      id: sessionStorage.getItem('reservation'),
+      user: sessionStorage.getItem('username'),
+      dep_flight_no: this.props.match.params.flight_no,
+      return_flight_no: id,
+    };
+    if(sessionStorage.getItem('reservation') && sessionStorage.getItem('reservation') !== "0"){
+      axios.post("http://localhost:5000/reserve/edit", editedReservation).then((response) => {
+        console.log(response.data);
+      });
+      sessionStorage.setItem('reservation',"0");
+    }else{
+      axios.post("http://localhost:5000/reserve/add", newReservation).then((response) => {
+        console.log(response.data);
+      });
+    }
   }
 
   // This method will map out the flights on the table

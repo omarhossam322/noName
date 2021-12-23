@@ -50,6 +50,23 @@ flightRoutes.route("/reserve/add").post(function (req, response) {
   });
 });
 
+flightRoutes.route("/reserve/edit").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId( req.body.id )};
+  let myobj = {
+    $set: {
+      _id: ObjectId( req.body.id ),
+      user: req.body.user,
+      dep_flight_no: req.body.dep_flight_no,
+      return_flight_no: req.body.return_flight_no,
+    }
+  };
+  db_connect.collection("reservations").updateOne(myquery, myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 flightRoutes.route("/reservations/:user").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { user: req.params.user};

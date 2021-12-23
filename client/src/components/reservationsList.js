@@ -9,6 +9,14 @@ const Reservation = (props) => (
     
     <td>
       <a
+          href="/userHome"
+          onClick={() => {
+            sessionStorage.setItem('reservation', props.reservation._id)
+          }}
+        >
+          Edit
+        </a> | 
+      <a
         href="/reservations"
         onClick={() => {
           //popup
@@ -80,7 +88,7 @@ export default class ReservationList extends Component {
             <tr>
               <th>Departure Flight Number</th>
               <th>Arrival Flight Number</th>
-              
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{this.reservationList()}</tbody>

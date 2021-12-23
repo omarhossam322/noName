@@ -43,9 +43,14 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/" onClick={sessionStorage.setItem('username', 'guest')}>
+              <a className="nav-link"
+                href="/"
+                onClick={() => {
+                  sessionStorage.setItem('username', "guest")
+                }}
+              >
                 Signout
-              </NavLink>
+              </a>
             </li>
           </ul>
         </div>
