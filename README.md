@@ -12,5 +12,4 @@ Start Web server (linux)
 ```
 cd client
 npm i && npm start
-
 ```
